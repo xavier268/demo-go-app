@@ -1,4 +1,4 @@
-module demo/goapp
+module github.com/xavier268/demo-go-app
 
 go 1.18
 
