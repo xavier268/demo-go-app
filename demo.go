@@ -61,6 +61,12 @@ type hello struct {
 	app.Compo
 }
 
+func (h *hello) OnAppUpdate(ctx app.Context) {
+	fmt.Println("Mounting app ...")
+	//ctx.Async(tick)
+	_ = tick
+}
+
 // The Render method is where the component appearance is defined. Here, a
 // "Hello World!" is displayed as a heading.
 func (h *hello) Render() app.UI {
@@ -71,4 +77,12 @@ func (h *hello) Render() app.UI {
 		app.If(app.IsClient), app.Div().Text("Is client"),
 		app.If(app.IsServer), app.Div().Text("Is server"),
 	)
+}
+
+func tick() {
+	ticker := time.NewTicker(3 * time.Second)
+
+	for range ticker.C {
+		fmt.Println("Tick ...")
+	}
 }
