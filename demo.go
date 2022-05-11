@@ -67,6 +67,8 @@ func (h *hello) Render() app.UI {
 	return app.Div().Body(
 		app.H1().Text("Success ! "),
 		app.Br(),
-		app.Div().Text("Time is "+time.Now().Format("2 JAN 2006 at 15h04m05s")),
+		app.Div().Text("Time is "+time.Now().Format("2 jan 2006 at 15h04m05s")),
+		app.If(app.IsClient), app.Div().Text("Is client"),
+		app.If(app.IsServer), app.Div().Text("Is server"),
 	)
 }
